@@ -1,0 +1,45 @@
+Algorithm CalculateDotProduct()
+    Write "Enter the elements of vector v1 (comma-separated): "
+    Read v1Input
+
+    Write "Enter the elements of vector v2 (comma-separated): "
+    Read v2Input
+
+    v1 <- Split v1Input by comma and convert each element to a list of floating-point numbers
+    v2 <- Split v2Input by comma and convert each element to a list of floating-point numbers
+
+    If the length of v1 is not equal to the length of v2
+        Display "Vector dimensions must be equal."
+        Exit
+
+    Initialize productScalar as 0
+    For i from 0 to the length of v1 - 1
+        Add v1[i] multiplied by v2[i] to productScalar
+
+    Display "Dot Product Result:", productScalar
+End Algorithm
+
+Algorithm CheckOrthogonality()
+    Write "Enter the elements of vector v1 (comma-separated): "
+    Read v1Input
+
+    Write "Enter the elements of vector v2 (comma-separated): "
+    Read v2Input
+
+    v1 <- Split v1Input by comma and convert each element to a list of floating-point numbers
+    v2 <- Split v2Input by comma and convert each element to a list of floating-point numbers
+
+    If the length of v1 is not equal to the length of v2
+        Display "Vector dimensions must be equal."
+        Exit
+
+    Initialize productScalar as 0
+    For i from 0 to the length of v1 - 1
+        Add v1[i] multiplied by v2[i] to productScalar
+
+    If productScalar equals 0
+        Display "The vectors are orthogonal."
+    Else
+        Display "The vectors are not orthogonal."
+    End If
+End Algorithm

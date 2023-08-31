@@ -1,0 +1,42 @@
+Algorithm CalculateDistinctElementsSum()
+    Write "Enter the elements of the first array (comma-separated): "
+    Read ensemble1_input
+
+    Write "Enter the elements of the second array (comma-separated): "
+    Read ensemble2_input
+
+    ensemble1 <- empty array
+    ensemble2 <- empty array
+
+    For each element in ensemble1_input separated by a comma
+        Add the integer element after removing spaces to ensemble1
+    
+    For each element in ensemble2_input separated by a comma
+        Add the integer element after removing spaces to ensemble2
+
+    elements_distincts <- empty array
+
+    For each element in ensemble1
+        is_in_ensemble2 <- false
+        For each number in ensemble2
+            If element is equal to number
+                Set is_in_ensemble2 to true
+                Exit the loop
+        If is_in_ensemble2 is false
+            Add element to elements_distincts
+    
+    For each element in ensemble2
+        is_in_ensemble1 <- false
+        For each number in ensemble1
+            If element is equal to number
+                Set is_in_ensemble1 to true
+                Exit the loop
+        If is_in_ensemble1 is false
+            Add element to elements_distincts
+    
+    sum <- 0
+    For each element in elements_distincts
+        sum <- sum + element
+    
+    Write "Sum of Distinct Elements:", sum
+End Algorithm

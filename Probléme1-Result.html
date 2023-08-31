@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Reset some default styles */
+    body, h1, h2, p, label, input, button {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 400px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #007bff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .result {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .result h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+
+    .result #resultSum {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+</style>
+<title>Sum of Distinct Elements</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Sum of Distinct Elements</h1>
+
+        <label for="set1">Enter elements of the first array (comma-separated):</label>
+        <input type="text" id="set1">
+
+        <label for="set2">Enter elements of the second array (comma-separated):</label>
+        <input type="text" id="set2">
+
+        <button onclick="calculateSumAndDisplay()">Calculate and Display</button>
+
+        <div class="result">
+            <h2>Sum of Distinct Elements:</h2>
+            <div id="resultSum"></div>
+        </div>
+    </div>
+
+    <script>
+ function calculateSumAndDisplay() {
+    const set1Input = document.getElementById("set1").value;
+    const set2Input = document.getElementById("set2").value;
+
+    const set1 = set1Input.split(",");
+    const set2 = set2Input.split(",");
+
+    const distinctElements = [];
+
+    for (let i = 0; i < set1.length; i++) {
+        const element = parseInt(set1[i].trim());
+        let isInSet2 = false;
+
+        for (let j = 0; j < set2.length; j++) {
+            if (element === parseInt(set2[j].trim())) {
+                isInSet2 = true;
+                break;
+            }
+        }
+
+        if (!isInSet2) {
+            distinctElements.push(element);
+        }
+    }
+
+    for (let i = 0; i < set2.length; i++) {
+        const element = parseInt(set2[i].trim());
+        let isInSet1 = false;
+
+        for (let j = 0; j < set1.length; j++) {
+            if (element === parseInt(set1[j].trim())) {
+                isInSet1 = true;
+                break;
+            }
+        }
+
+        if (!isInSet1) {
+            distinctElements.push(element);
+        }
+    }
+
+    let sum = 0;
+    for (let i = 0; i < distinctElements.length; i++) {
+        sum += distinctElements[i];
+    }
+
+    const resultSum = document.getElementById("resultSum");
+    resultSum.textContent = sum;
+}
+
+    </script>
+</body>
+</html>

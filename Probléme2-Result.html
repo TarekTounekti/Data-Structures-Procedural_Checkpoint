@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 400px;
+    }
+    .title {
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #007bff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    .result {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .result h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+</style>
+<title>Scalar Product and Orthogonality</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Scalar Product and Orthogonality</h1>
+
+        <label for="v1">Vector v1 (comma-separated):</label>
+        <input type="text" id="v1">
+
+        <label for="v2">Vector v2 (comma-separated):</label>
+        <input type="text" id="v2">
+
+        <button onclick="calculateScalarProduct()">Calculate Scalar Product</button>
+
+        <div class="result">
+            <h2>Scalar Product Result:</h2>
+            <div id="resultScalarProduct"></div>
+        </div>
+
+        <button onclick="checkOrthogonality()">Check Orthogonality</button>
+
+        <div class="result">
+            <h2>Orthogonality Verification Result:</h2>
+            <div id="resultOrthogonality"></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateScalarProduct() {
+            const v1Input = document.getElementById("v1").value;
+            const v2Input = document.getElementById("v2").value;
+
+            const v1 = v1Input.split(",").map(element => parseFloat(element.trim()));
+            const v2 = v2Input.split(",").map(element => parseFloat(element.trim()));
+
+            if (v1.length !== v2.length) {
+                alert("Vector dimensions must be equal.");
+                return;
+            }
+
+            let scalarProduct = 0;
+            for (let i = 0; i < v1.length; i++) {
+                scalarProduct += v1[i] * v2[i];
+            }
+
+            const resultScalarProduct = document.getElementById("resultScalarProduct");
+            resultScalarProduct.textContent = scalarProduct;
+        }
+
+        function checkOrthogonality() {
+            const v1Input = document.getElementById("v1").value;
+            const v2Input = document.getElementById("v2").value;
+
+            const v1 = v1Input.split(",").map(element => parseFloat(element.trim()));
+            const v2 = v2Input.split(",").map(element => parseFloat(element.trim()));
+
+            if (v1.length !== v2.length) {
+                alert("Vector dimensions must be equal.");
+                return;
+            }
+
+            let scalarProduct = 0;
+            for (let i = 0; i < v1.length; i++) {
+                scalarProduct += v1[i] * v2[i];
+            }
+
+            const resultOrthogonality = document.getElementById("resultOrthogonality");
+
+            if (scalarProduct === 0) {
+                resultOrthogonality.textContent = "The vectors are orthogonal.";
+            } else {
+                resultOrthogonality.textContent = "The vectors are not orthogonal.";
+            }
+        }
+    </script>
+</body>
+</html>
